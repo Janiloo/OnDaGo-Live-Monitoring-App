@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OnDaGO.MAUI.Views.RegistrationPage"
+             Title="RegistrationPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="*, Auto">
+        <!-- Background Gradient -->
+        <Image Grid.RowSpan="2" Aspect="AspectFill" Source="gradient.png"/>
+
+        <!-- Logo -->
+        <Image 
+            Grid.Row="0"
+            Source="ondagologonobg.png" 
+            HorizontalOptions="Center"
+            HeightRequest="210"
+            WidthRequest="260"/>
+
+        <!-- Bottom Sheet for Registration Form -->
+        <Border Grid.Row="1"
+                BackgroundColor="White"
+                StrokeThickness="0"
+                Margin="0, -40, 0, 0"
+                HeightRequest="650">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="30,30,0,0"/>
+                <!-- Top corners rounded, bottom corners square -->
+            </Border.StrokeShape>
+
+            <ScrollView>
+                <StackLayout Padding="30" Spacing="20">
+                    <Label Text="Create Your Account" 
+                           FontSize="32" 
+                           FontAttributes="Bold" 
+                           HorizontalOptions="Center"
+                           TextColor="#333"/>
+
+                    <Entry Placeholder="Name" 
+                           x:Name="NameEntry" 
+                           TextColor="#333"
+                           PlaceholderColor="#999"
+                           FontSize="18"/>
+
+                    <Entry Placeholder="Email" 
+                           x:Name="EmailEntry" 
+                           Keyboard="Email"
+                           TextColor="#333"
+                           PlaceholderColor="#999"
+                           FontSize="18"/>
+
+                    <Entry Placeholder="Phone Number" 
+                           x:Name="PhoneNumberEntry" 
+                           Keyboard="Telephone"
+                           TextColor="#333"
+                           PlaceholderColor="#999"
+                           FontSize="18"/>
+
+                    <Entry Placeholder="Password" 
+                           x:Name="PasswordEntry" 
+                           IsPassword="True"
+                           TextColor="#333"
+                           PlaceholderColor="#999"
+                           FontSize="18"/>
+
+                    <Entry Placeholder="Confirm Password" 
+                           x:Name="ConfirmPasswordEntry" 
+                           IsPassword="True"
+                           TextColor="#333"
+                           PlaceholderColor="#999"
+                           FontSize="18"/>
+
+                    <!-- Show Password Toggle -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                        <CheckBox x:Name="ShowPasswordCheckBox" CheckedChanged="OnShowPasswordCheckedChanged"/>
+                        <Label Text="Show Password" VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <!-- Upload Document Front -->
+                    <Button Text="Upload Document Front Image" Clicked="OnDocumentFrontClicked" CornerRadius="20" FontAttributes="Bold"/>
+                    <Image x:Name="DocumentImageFrontPreview" HeightRequest="100" IsVisible="False"/>
+
+                    <!-- Upload Selfie -->
+                    <Button Text="Upload Selfie" Clicked="OnSelfieImageClicked" CornerRadius="20" FontAttributes="Bold"/>
+                    <Image x:Name="SelfieImagePreview" HeightRequest="100" IsVisible="False"/>
+
+                    <!-- Error Label -->
+                    <Label x:Name="ErrorLabel"
+                           TextColor="Red"
+                           FontSize="14"
+                           HorizontalOptions="Center"
+                           IsVisible="False"/>
+
+                    <!-- Register Button -->
+                    <Button Text="Register"
+                            Clicked="OnRegisterClicked"
+                            BackgroundColor="#efbb6b"
+                            TextColor="White"
+                            CornerRadius="20"
+                            HeightRequest="50"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            HorizontalOptions="FillAndExpand"/>
+
+                    <!-- Footer for Login Link -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" Margin="0,5,0,0">
+                        <Label Text="Already have an account?" FontSize="14" TextColor="#999"/>
+                        <Button Text="Login"
+                                Clicked="OnLoginClicked"
+                                TextColor="#efbb6b"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontSize="14"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+</ContentPage>
